@@ -103,7 +103,6 @@ class Content extends React.Component {
       $.get('/SimpleQueryDate', this.state, function (data) {
         //countDeliveryNumber is a Array,and the row of countDeliveryNumber is
         //Object that contain Number
-        console.log(data);
         const state = Object.assign({}, this.state, { countDeliveryNumber: data });
         this.setState(state);
       }.bind(self));
@@ -113,7 +112,6 @@ class Content extends React.Component {
         const self = this;
         $.get('/queryComplexData', this.state, function (data) {
             ifQueryData = 1;
-          console.log(data);
             const state = Object.assign({}, this.state, {queryData: data});
             this.setState(state);
         }.bind(self));
@@ -126,19 +124,16 @@ class Content extends React.Component {
             const state = Object.assign({}, this.state, { tableData: data });
             this.setState(state);//data should like tableData in the top
         }.bind(self));
-        console.log(itemNumber);
     }
     queryOutWarehouse() {
         const self = this;
         $.get('/queryOutWarehouse', function (data) {
-            console.log(data);
             const state = Object.assign({}, this.state, { tableData: data });
             this.setState(state);//data should like tableData in the top
         }.bind(self));
     }
     render() {
         const name = this.props.name;
-        console.log(name);
         let element;
         if (name === 'input') {
             element = (<div className="inputContent">

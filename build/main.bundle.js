@@ -44127,7 +44127,7 @@
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -44176,490 +44176,485 @@
 	var itemNumber = [];
 
 	var ReferTable = function (_React$Component) {
-	  _inherits(ReferTable, _React$Component);
+	    _inherits(ReferTable, _React$Component);
 
-	  function ReferTable(props) {
-	    _classCallCheck(this, ReferTable);
+	    function ReferTable(props) {
+	        _classCallCheck(this, ReferTable);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ReferTable).call(this, props));
-	  }
-
-	  _createClass(ReferTable, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          _Table.Table,
-	          null,
-	          _react2.default.createElement(
-	            _Table.TableHeader,
-	            null,
-	            _react2.default.createElement(
-	              _Table.TableRow,
-	              null,
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'Id' },
-	                'Id'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'Number' },
-	                '快递单号'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'StorePlace' },
-	                '仓库内位置'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'Type' },
-	                '单品种类'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'incomeTime' },
-	                '入库时间'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'deadTime' },
-	                '到期时间'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'reasonOfIn' },
-	                '入库原因'
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _Table.TableBody,
-	            null,
-	            this.props.tableData.map(function (row, index) {
-	              return _react2.default.createElement(
-	                _Table.TableRow,
-	                { key: index },
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  index
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.Number
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.savePlace
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.type
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.inToTime.match(/(\w+-\w+-\w+)T/)[1]
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.deadTime.match(/(\w+-\w+-\w+)T/)[1]
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.inToReason
-	                )
-	              );
-	            })
-	          )
-	        )
-	      );
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(ReferTable).call(this, props));
 	    }
-	  }]);
 
-	  return ReferTable;
+	    _createClass(ReferTable, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    _Table.Table,
+	                    null,
+	                    _react2.default.createElement(
+	                        _Table.TableHeader,
+	                        null,
+	                        _react2.default.createElement(
+	                            _Table.TableRow,
+	                            null,
+	                            _react2.default.createElement(
+	                                _Table.TableHeaderColumn,
+	                                { tooltip: 'Id' },
+	                                'Id'
+	                            ),
+	                            _react2.default.createElement(
+	                                _Table.TableHeaderColumn,
+	                                { tooltip: 'Number' },
+	                                '快递单号'
+	                            ),
+	                            _react2.default.createElement(
+	                                _Table.TableHeaderColumn,
+	                                { tooltip: 'StorePlace' },
+	                                '仓库内位置'
+	                            ),
+	                            _react2.default.createElement(
+	                                _Table.TableHeaderColumn,
+	                                { tooltip: 'Type' },
+	                                '单品种类'
+	                            ),
+	                            _react2.default.createElement(
+	                                _Table.TableHeaderColumn,
+	                                { tooltip: 'incomeTime' },
+	                                '入库时间'
+	                            ),
+	                            _react2.default.createElement(
+	                                _Table.TableHeaderColumn,
+	                                { tooltip: 'deadTime' },
+	                                '到期时间'
+	                            ),
+	                            _react2.default.createElement(
+	                                _Table.TableHeaderColumn,
+	                                { tooltip: 'reasonOfIn' },
+	                                '入库原因'
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        _Table.TableBody,
+	                        null,
+	                        this.props.tableData.map(function (row, index) {
+	                            return _react2.default.createElement(
+	                                _Table.TableRow,
+	                                { key: index },
+	                                _react2.default.createElement(
+	                                    _Table.TableRowColumn,
+	                                    null,
+	                                    index
+	                                ),
+	                                _react2.default.createElement(
+	                                    _Table.TableRowColumn,
+	                                    null,
+	                                    row.Number
+	                                ),
+	                                _react2.default.createElement(
+	                                    _Table.TableRowColumn,
+	                                    null,
+	                                    row.savePlace
+	                                ),
+	                                _react2.default.createElement(
+	                                    _Table.TableRowColumn,
+	                                    null,
+	                                    row.type
+	                                ),
+	                                _react2.default.createElement(
+	                                    _Table.TableRowColumn,
+	                                    null,
+	                                    row.inToTime.match(/(\w+-\w+-\w+)T/)[1]
+	                                ),
+	                                _react2.default.createElement(
+	                                    _Table.TableRowColumn,
+	                                    null,
+	                                    row.deadTime.match(/(\w+-\w+-\w+)T/)[1]
+	                                ),
+	                                _react2.default.createElement(
+	                                    _Table.TableRowColumn,
+	                                    null,
+	                                    row.inToReason
+	                                )
+	                            );
+	                        })
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return ReferTable;
 	}(_react2.default.Component);
 
 	var Content = function (_React$Component2) {
-	  _inherits(Content, _React$Component2);
+	    _inherits(Content, _React$Component2);
 
-	  function Content(props) {
-	    _classCallCheck(this, Content);
+	    function Content(props) {
+	        _classCallCheck(this, Content);
 
-	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Content).call(this, props));
+	        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Content).call(this, props));
 
-	    _this2.state = { value: 1, countDeliveryNumber: [], tableData: [] };
-	    _this2.handleChange = _this2.handleChange.bind(_this2);
-	    _this2.recordQuery = _this2.recordQuery.bind(_this2);
-	    _this2.SimpleQueryType = _this2.SimpleQueryType.bind(_this2);
-	    _this2.SimpleQueryDate = _this2.SimpleQueryDate.bind(_this2);
-	    _this2.handleOnBlurRecord = _this2.handleOnBlurRecord.bind(_this2);
-	    _this2.handChangeCountNumber = _this2.handChangeCountNumber.bind(_this2);
-	    _this2.handleSelectOutWarehouse = _this2.handleSelectOutWarehouse.bind(_this2);
-	    _this2.passInputValue = _this2.passInputValue.bind(_this2);
-	    _this2.queryOutWarehouse = _this2.queryOutWarehouse.bind(_this2);
-	    _this2.handleOutWarehouse = _this2.handleOutWarehouse.bind(_this2);
-	    return _this2;
-	  }
-
-	  _createClass(Content, [{
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate() {
-	      ifQueryData = 0;
+	        _this2.state = { value: 1, countDeliveryNumber: [], tableData: [] };
+	        _this2.handleChange = _this2.handleChange.bind(_this2);
+	        _this2.recordQuery = _this2.recordQuery.bind(_this2);
+	        _this2.SimpleQueryType = _this2.SimpleQueryType.bind(_this2);
+	        _this2.SimpleQueryDate = _this2.SimpleQueryDate.bind(_this2);
+	        _this2.handleOnBlurRecord = _this2.handleOnBlurRecord.bind(_this2);
+	        _this2.handChangeCountNumber = _this2.handChangeCountNumber.bind(_this2);
+	        _this2.handleSelectOutWarehouse = _this2.handleSelectOutWarehouse.bind(_this2);
+	        _this2.passInputValue = _this2.passInputValue.bind(_this2);
+	        _this2.queryOutWarehouse = _this2.queryOutWarehouse.bind(_this2);
+	        _this2.handleOutWarehouse = _this2.handleOutWarehouse.bind(_this2);
+	        return _this2;
 	    }
-	  }, {
-	    key: 'handleChange',
-	    value: function handleChange(event, index, value) {
-	      this.setState({ value: value });
-	    }
-	  }, {
-	    key: 'handleOnBlurRecord',
-	    value: function handleOnBlurRecord() {
-	      var queryCondition = this.refs.condition.getValue();
-	      var stateObj = Object.assign({}, this.state, { condition: queryCondition });
-	      this.setState(stateObj);
-	    }
-	  }, {
-	    key: 'handChangeCountNumber',
-	    value: function handChangeCountNumber(nothing, date) {
-	      this.setState({ value: date });
-	    }
-	  }, {
-	    key: 'handleSelectOutWarehouse',
-	    value: function handleSelectOutWarehouse(selectRow) {
-	      var _iteratorNormalCompletion = true;
-	      var _didIteratorError = false;
-	      var _iteratorError = undefined;
 
-	      try {
-	        for (var _iterator = selectRow[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	          var item = _step.value;
-
-	          itemNumber.push(this.state.tableData[item].Number); //store data in itemNumber
+	    _createClass(Content, [{
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            ifQueryData = 0;
 	        }
-	      } catch (err) {
-	        _didIteratorError = true;
-	        _iteratorError = err;
-	      } finally {
-	        try {
-	          if (!_iteratorNormalCompletion && _iterator.return) {
-	            _iterator.return();
-	          }
-	        } finally {
-	          if (_didIteratorError) {
-	            throw _iteratorError;
-	          }
+	    }, {
+	        key: 'handleChange',
+	        value: function handleChange(event, index, value) {
+	            this.setState({ value: value });
 	        }
-	      }
-	    }
-	  }, {
-	    key: 'passInputValue',
-	    value: function passInputValue() {
-	      var self = this;
-	      var value = {
-	        Number: this.refs.expressNumber.getValue(),
-	        type: this.refs.expressType.getValue(),
-	        savePlace: this.refs.storePlace.getValue(),
-	        inToReason: this.refs.reasonOfIn.getValue()
-	      };
-	      $('.qrcode').qrcode({ text: JSON.stringify(value), width: 144, height: 144 });
-	      $.get('/inputRecord', value, function () {
-	        var state = Object.assign({}, this.state, { input: "" });
-	        this.setState(state);
-	      }.bind(self));
-	    }
-	  }, {
-	    key: 'SimpleQueryType',
-	    value: function SimpleQueryType() {
-	      var self = this;
-	      $.get('/SimpleQueryType', this.state, function (data) {
-	        ifQueryData = 1;
-	        var state = Object.assign({}, this.state, { queryData: data });
-	        this.setState(state);
-	      }.bind(self));
-	    }
-	  }, {
-	    key: 'SimpleQueryDate',
-	    value: function SimpleQueryDate() {
-	      var self = this;
-	      $.get('/SimpleQueryDate', this.state, function (data) {
-	        //countDeliveryNumber is a Array,and the row of countDeliveryNumber is
-	        //Object that contain Number
-	        console.log(data);
-	        var state = Object.assign({}, this.state, { countDeliveryNumber: data });
-	        this.setState(state);
-	      }.bind(self));
-	    }
-	  }, {
-	    key: 'recordQuery',
-	    value: function recordQuery() {
-	      /*type 取值：1为按编号查询,2为按日期查询*/
-	      var self = this;
-	      $.get('/queryComplexData', this.state, function (data) {
-	        ifQueryData = 1;
-	        console.log(data);
-	        var state = Object.assign({}, this.state, { queryData: data });
-	        this.setState(state);
-	      }.bind(self));
-	    }
-	  }, {
-	    key: 'handleOutWarehouse',
-	    value: function handleOutWarehouse() {
-	      var self = this;
-	      var set = new Set(itemNumber);
-	      itemNumber = [].concat(_toConsumableArray(set));
-	      $.get('/OutWarehouse', { itemNumber: itemNumber }, function (data) {
-	        var state = Object.assign({}, this.state, { tableData: data });
-	        this.setState(state); //data should like tableData in the top
-	      }.bind(self));
-	      console.log(itemNumber);
-	    }
-	  }, {
-	    key: 'queryOutWarehouse',
-	    value: function queryOutWarehouse() {
-	      var self = this;
-	      $.get('/queryOutWarehouse', function (data) {
-	        console.log(data);
-	        var state = Object.assign({}, this.state, { tableData: data });
-	        this.setState(state); //data should like tableData in the top
-	      }.bind(self));
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var name = this.props.name;
-	      console.log(name);
-	      var element = void 0;
-	      if (name === 'input') {
-	        element = _react2.default.createElement(
-	          'div',
-	          { className: 'inputContent' },
-	          _react2.default.createElement(_TextField2.default, {
-	            floatingLabelText: '快递单号',
-	            style: { width: '339px' },
-	            ref: 'expressNumber',
-	            value: this.state.input
-	          }),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement(_TextField2.default, {
-	            floatingLabelText: '单品种类',
-	            style: { width: '339px' },
-	            ref: 'expressType',
-	            value: this.state.input
-	          }),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement(_TextField2.default, {
-	            floatingLabelText: '仓库内位置',
-	            style: { width: '339px' },
-	            ref: 'storePlace',
-	            value: this.state.input
-	          }),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement(_TextField2.default, {
-	            floatingLabelText: '入库原因',
-	            style: { width: '339px' },
-	            ref: 'reasonOfIn',
-	            value: this.state.input
-	          }),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement(_RaisedButton2.default, {
-	            label: '入库', className: 'intoWarehouse', primary: true, style: { margin: 12 }, onClick: this.passInputValue //onclick function consider as one type
-	          }),
-	          _react2.default.createElement('div', { className: 'qrcode' })
-	        );
-	      } else if (name === null) {
-	        element = _react2.default.createElement('div', null);
-	      } else if (name === 'manageType') {
-	        var tableComp = ifQueryData ? _react2.default.createElement(ReferTable, { tableData: this.state.queryData }) : null;
-	        element = _react2.default.createElement(
-	          'div',
-	          { className: 'manageTypeContent' },
-	          _react2.default.createElement(
-	            _SelectField2.default,
-	            { value: this.state.value, onChange: this.handleChange },
-	            _react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: '易碎' }),
-	            _react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: '易燃' }),
-	            _react2.default.createElement(_MenuItem2.default, { value: 3, primaryText: '其他' })
-	          ),
-	          _react2.default.createElement(_RaisedButton2.default, {
-	            label: '查询', primary: true, style: { margin: 12 }, onClick: this.SimpleQueryType //onclick function consider as one type
-	          }),
-	          tableComp
-	        );
-	      } else if (name === 'recordQuery') {
-	        var _tableComp = ifQueryData ? _react2.default.createElement(ReferTable, { tableData: this.state.queryData }) : null;
-	        element = _react2.default.createElement(
-	          'div',
-	          { className: 'recordQueryContent' },
-	          _react2.default.createElement(
-	            _SelectField2.default,
-	            { value: this.state.value, onChange: this.handleChange },
-	            _react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: '按编号查询' }),
-	            _react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: '按日期查询' })
-	          ),
-	          _react2.default.createElement(_TextField2.default, {
-	            hintText: '查询条件',
-	            ref: 'condition',
-	            onBlur: this.handleOnBlurRecord
-	          }),
-	          _react2.default.createElement(_RaisedButton2.default, {
-	            label: '查询', primary: true, style: { margin: 12 }, onClick: this.recordQuery
-	          }),
-	          _tableComp
-	        );
-	      } else if (name === 'countNumber') {
-	        element = _react2.default.createElement(
-	          'div',
-	          { className: 'countNumberContent' },
-	          _react2.default.createElement(_DatePicker2.default, { hintText: '按日期查询入库件', ref: 'date', onChange: this.handChangeCountNumber }),
-	          _react2.default.createElement(_RaisedButton2.default, {
-	            label: '查询', primary: true, style: { margin: 12 }, onClick: this.SimpleQueryDate
-	          }),
-	          _react2.default.createElement(
-	            _Table.Table,
-	            null,
-	            _react2.default.createElement(
-	              _Table.TableHeader,
-	              null,
-	              _react2.default.createElement(
-	                _Table.TableRow,
-	                null,
-	                _react2.default.createElement(
-	                  _Table.TableHeaderColumn,
-	                  { tooltip: 'Id' },
-	                  'Id'
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableHeaderColumn,
-	                  { tooltip: 'recordNumber' },
-	                  '入库件数'
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              _Table.TableBody,
-	              null,
-	              this.state.countDeliveryNumber.map(function (row, index) {
-	                return _react2.default.createElement(
-	                  _Table.TableRow,
-	                  { key: index },
-	                  _react2.default.createElement(
-	                    _Table.TableRowColumn,
-	                    null,
-	                    index
-	                  ),
-	                  _react2.default.createElement(
-	                    _Table.TableRowColumn,
-	                    null,
-	                    row.Number
-	                  )
-	                );
-	              })
-	            )
-	          )
-	        );
-	      } else {
-	        element = _react2.default.createElement(
-	          'div',
-	          { className: 'outWarehouseContent' },
-	          _react2.default.createElement(
-	            _Table.Table,
-	            { multiSelectable: true, onRowSelection: this.handleSelectOutWarehouse },
-	            _react2.default.createElement(
-	              _Table.TableHeader,
-	              { enableSelectAll: true },
-	              _react2.default.createElement(
-	                _Table.TableRow,
-	                null,
-	                _react2.default.createElement(
-	                  _Table.TableHeaderColumn,
-	                  { tooltip: 'Id' },
-	                  'Id'
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableHeaderColumn,
-	                  { tooltip: 'Number' },
-	                  '快递单号'
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableHeaderColumn,
-	                  { tooltip: 'StorePlace' },
-	                  '仓库内位置'
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableHeaderColumn,
-	                  { tooltip: 'Type' },
-	                  '单品种类'
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableHeaderColumn,
-	                  { tooltip: 'DeadTime' },
-	                  '到期时间'
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              _Table.TableBody,
-	              null,
-	              this.state.tableData.map(function (row, index) {
-	                return _react2.default.createElement(
-	                  _Table.TableRow,
-	                  { key: index },
-	                  _react2.default.createElement(
-	                    _Table.TableRowColumn,
-	                    null,
-	                    index
-	                  ),
-	                  _react2.default.createElement(
-	                    _Table.TableRowColumn,
-	                    null,
-	                    row.Number
-	                  ),
-	                  _react2.default.createElement(
-	                    _Table.TableRowColumn,
-	                    null,
-	                    row.savePlace
-	                  ),
-	                  _react2.default.createElement(
-	                    _Table.TableRowColumn,
-	                    null,
-	                    row.type
-	                  ),
-	                  _react2.default.createElement(
-	                    _Table.TableRowColumn,
-	                    null,
-	                    row.deadTime
-	                  )
-	                );
-	              })
-	            )
-	          ),
-	          _react2.default.createElement(_RaisedButton2.default, {
-	            label: '查询', primary: true, style: { margin: 12 }, onClick: this.queryOutWarehouse
-	          }),
-	          _react2.default.createElement(_RaisedButton2.default, {
-	            label: '出库', primary: true, style: { margin: 12 }, onClick: this.handleOutWarehouse
-	          })
-	        );
-	      }
-	      return element;
-	    }
-	  }]);
+	    }, {
+	        key: 'handleOnBlurRecord',
+	        value: function handleOnBlurRecord() {
+	            var queryCondition = this.refs.condition.getValue();
+	            var stateObj = Object.assign({}, this.state, { condition: queryCondition });
+	            this.setState(stateObj);
+	        }
+	    }, {
+	        key: 'handChangeCountNumber',
+	        value: function handChangeCountNumber(nothing, date) {
+	            this.setState({ value: date });
+	        }
+	    }, {
+	        key: 'handleSelectOutWarehouse',
+	        value: function handleSelectOutWarehouse(selectRow) {
+	            var _iteratorNormalCompletion = true;
+	            var _didIteratorError = false;
+	            var _iteratorError = undefined;
 
-	  return Content;
+	            try {
+	                for (var _iterator = selectRow[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	                    var item = _step.value;
+
+	                    itemNumber.push(this.state.tableData[item].Number); //store data in itemNumber
+	                }
+	            } catch (err) {
+	                _didIteratorError = true;
+	                _iteratorError = err;
+	            } finally {
+	                try {
+	                    if (!_iteratorNormalCompletion && _iterator.return) {
+	                        _iterator.return();
+	                    }
+	                } finally {
+	                    if (_didIteratorError) {
+	                        throw _iteratorError;
+	                    }
+	                }
+	            }
+	        }
+	    }, {
+	        key: 'passInputValue',
+	        value: function passInputValue() {
+	            var self = this;
+	            var value = {
+	                Number: this.refs.expressNumber.getValue(),
+	                type: this.refs.expressType.getValue(),
+	                savePlace: this.refs.storePlace.getValue(),
+	                inToReason: this.refs.reasonOfIn.getValue()
+	            };
+	            $('.qrcode').qrcode({ text: JSON.stringify(value), width: 144, height: 144 });
+	            $.get('/inputRecord', value, function () {
+	                var state = Object.assign({}, this.state, { input: "" });
+	                this.setState(state);
+	            }.bind(self));
+	        }
+	    }, {
+	        key: 'SimpleQueryType',
+	        value: function SimpleQueryType() {
+	            var self = this;
+	            $.get('/SimpleQueryType', this.state, function (data) {
+	                ifQueryData = 1;
+	                var state = Object.assign({}, this.state, { queryData: data });
+	                this.setState(state);
+	            }.bind(self));
+	        }
+	    }, {
+	        key: 'SimpleQueryDate',
+	        value: function SimpleQueryDate() {
+	            var self = this;
+	            $.get('/SimpleQueryDate', this.state, function (data) {
+	                //countDeliveryNumber is a Array,and the row of countDeliveryNumber is
+	                //Object that contain Number
+	                var state = Object.assign({}, this.state, { countDeliveryNumber: data });
+	                this.setState(state);
+	            }.bind(self));
+	        }
+	    }, {
+	        key: 'recordQuery',
+	        value: function recordQuery() {
+	            /*type 取值：1为按编号查询,2为按日期查询*/
+	            var self = this;
+	            $.get('/queryComplexData', this.state, function (data) {
+	                ifQueryData = 1;
+	                var state = Object.assign({}, this.state, { queryData: data });
+	                this.setState(state);
+	            }.bind(self));
+	        }
+	    }, {
+	        key: 'handleOutWarehouse',
+	        value: function handleOutWarehouse() {
+	            var self = this;
+	            var set = new Set(itemNumber);
+	            itemNumber = [].concat(_toConsumableArray(set));
+	            $.get('/OutWarehouse', { itemNumber: itemNumber }, function (data) {
+	                var state = Object.assign({}, this.state, { tableData: data });
+	                this.setState(state); //data should like tableData in the top
+	            }.bind(self));
+	        }
+	    }, {
+	        key: 'queryOutWarehouse',
+	        value: function queryOutWarehouse() {
+	            var self = this;
+	            $.get('/queryOutWarehouse', function (data) {
+	                var state = Object.assign({}, this.state, { tableData: data });
+	                this.setState(state); //data should like tableData in the top
+	            }.bind(self));
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var name = this.props.name;
+	            var element = void 0;
+	            if (name === 'input') {
+	                element = _react2.default.createElement(
+	                    'div',
+	                    { className: 'inputContent' },
+	                    _react2.default.createElement(_TextField2.default, {
+	                        floatingLabelText: '快递单号',
+	                        style: { width: '339px' },
+	                        ref: 'expressNumber',
+	                        value: this.state.input
+	                    }),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement(_TextField2.default, {
+	                        floatingLabelText: '单品种类',
+	                        style: { width: '339px' },
+	                        ref: 'expressType',
+	                        value: this.state.input
+	                    }),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement(_TextField2.default, {
+	                        floatingLabelText: '仓库内位置',
+	                        style: { width: '339px' },
+	                        ref: 'storePlace',
+	                        value: this.state.input
+	                    }),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement(_TextField2.default, {
+	                        floatingLabelText: '入库原因',
+	                        style: { width: '339px' },
+	                        ref: 'reasonOfIn',
+	                        value: this.state.input
+	                    }),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement(_RaisedButton2.default, {
+	                        label: '入库', className: 'intoWarehouse', primary: true, style: { margin: 12 }, onClick: this.passInputValue //onclick function consider as one type
+	                    }),
+	                    _react2.default.createElement('div', { className: 'qrcode' })
+	                );
+	            } else if (name === null) {
+	                element = _react2.default.createElement('div', null);
+	            } else if (name === 'manageType') {
+	                var tableComp = ifQueryData ? _react2.default.createElement(ReferTable, { tableData: this.state.queryData }) : null;
+	                element = _react2.default.createElement(
+	                    'div',
+	                    { className: 'manageTypeContent' },
+	                    _react2.default.createElement(
+	                        _SelectField2.default,
+	                        { value: this.state.value, onChange: this.handleChange },
+	                        _react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: '易碎' }),
+	                        _react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: '易燃' }),
+	                        _react2.default.createElement(_MenuItem2.default, { value: 3, primaryText: '其他' })
+	                    ),
+	                    _react2.default.createElement(_RaisedButton2.default, {
+	                        label: '查询', primary: true, style: { margin: 12 }, onClick: this.SimpleQueryType //onclick function consider as one type
+	                    }),
+	                    tableComp
+	                );
+	            } else if (name === 'recordQuery') {
+	                var _tableComp = ifQueryData ? _react2.default.createElement(ReferTable, { tableData: this.state.queryData }) : null;
+	                element = _react2.default.createElement(
+	                    'div',
+	                    { className: 'recordQueryContent' },
+	                    _react2.default.createElement(
+	                        _SelectField2.default,
+	                        { value: this.state.value, onChange: this.handleChange },
+	                        _react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: '按编号查询' }),
+	                        _react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: '按日期查询' })
+	                    ),
+	                    _react2.default.createElement(_TextField2.default, {
+	                        hintText: '查询条件',
+	                        ref: 'condition',
+	                        onBlur: this.handleOnBlurRecord
+	                    }),
+	                    _react2.default.createElement(_RaisedButton2.default, {
+	                        label: '查询', primary: true, style: { margin: 12 }, onClick: this.recordQuery
+	                    }),
+	                    _tableComp
+	                );
+	            } else if (name === 'countNumber') {
+	                element = _react2.default.createElement(
+	                    'div',
+	                    { className: 'countNumberContent' },
+	                    _react2.default.createElement(_DatePicker2.default, { hintText: '按日期查询入库件', ref: 'date', onChange: this.handChangeCountNumber }),
+	                    _react2.default.createElement(_RaisedButton2.default, {
+	                        label: '查询', primary: true, style: { margin: 12 }, onClick: this.SimpleQueryDate
+	                    }),
+	                    _react2.default.createElement(
+	                        _Table.Table,
+	                        null,
+	                        _react2.default.createElement(
+	                            _Table.TableHeader,
+	                            null,
+	                            _react2.default.createElement(
+	                                _Table.TableRow,
+	                                null,
+	                                _react2.default.createElement(
+	                                    _Table.TableHeaderColumn,
+	                                    { tooltip: 'Id' },
+	                                    'Id'
+	                                ),
+	                                _react2.default.createElement(
+	                                    _Table.TableHeaderColumn,
+	                                    { tooltip: 'recordNumber' },
+	                                    '入库件数'
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            _Table.TableBody,
+	                            null,
+	                            this.state.countDeliveryNumber.map(function (row, index) {
+	                                return _react2.default.createElement(
+	                                    _Table.TableRow,
+	                                    { key: index },
+	                                    _react2.default.createElement(
+	                                        _Table.TableRowColumn,
+	                                        null,
+	                                        index
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        _Table.TableRowColumn,
+	                                        null,
+	                                        row.Number
+	                                    )
+	                                );
+	                            })
+	                        )
+	                    )
+	                );
+	            } else {
+	                element = _react2.default.createElement(
+	                    'div',
+	                    { className: 'outWarehouseContent' },
+	                    _react2.default.createElement(
+	                        _Table.Table,
+	                        { multiSelectable: true, onRowSelection: this.handleSelectOutWarehouse },
+	                        _react2.default.createElement(
+	                            _Table.TableHeader,
+	                            { enableSelectAll: true },
+	                            _react2.default.createElement(
+	                                _Table.TableRow,
+	                                null,
+	                                _react2.default.createElement(
+	                                    _Table.TableHeaderColumn,
+	                                    { tooltip: 'Id' },
+	                                    'Id'
+	                                ),
+	                                _react2.default.createElement(
+	                                    _Table.TableHeaderColumn,
+	                                    { tooltip: 'Number' },
+	                                    '快递单号'
+	                                ),
+	                                _react2.default.createElement(
+	                                    _Table.TableHeaderColumn,
+	                                    { tooltip: 'StorePlace' },
+	                                    '仓库内位置'
+	                                ),
+	                                _react2.default.createElement(
+	                                    _Table.TableHeaderColumn,
+	                                    { tooltip: 'Type' },
+	                                    '单品种类'
+	                                ),
+	                                _react2.default.createElement(
+	                                    _Table.TableHeaderColumn,
+	                                    { tooltip: 'DeadTime' },
+	                                    '到期时间'
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            _Table.TableBody,
+	                            null,
+	                            this.state.tableData.map(function (row, index) {
+	                                return _react2.default.createElement(
+	                                    _Table.TableRow,
+	                                    { key: index },
+	                                    _react2.default.createElement(
+	                                        _Table.TableRowColumn,
+	                                        null,
+	                                        index
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        _Table.TableRowColumn,
+	                                        null,
+	                                        row.Number
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        _Table.TableRowColumn,
+	                                        null,
+	                                        row.savePlace
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        _Table.TableRowColumn,
+	                                        null,
+	                                        row.type
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        _Table.TableRowColumn,
+	                                        null,
+	                                        row.deadTime
+	                                    )
+	                                );
+	                            })
+	                        )
+	                    ),
+	                    _react2.default.createElement(_RaisedButton2.default, {
+	                        label: '查询', primary: true, style: { margin: 12 }, onClick: this.queryOutWarehouse
+	                    }),
+	                    _react2.default.createElement(_RaisedButton2.default, {
+	                        label: '出库', primary: true, style: { margin: 12 }, onClick: this.handleOutWarehouse
+	                    })
+	                );
+	            }
+	            return element;
+	        }
+	    }]);
+
+	    return Content;
 	}(_react2.default.Component);
 
 	exports.default = Content;
