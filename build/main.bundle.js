@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
 	var _react = __webpack_require__(1);
 
@@ -63,6 +63,21 @@
 	_reactDom2.default.render(_react2.default.createElement(_wrap2.default, null), document.querySelector('.wrap')); /**
 	                                                                                                                  * Created by ttm on 2016/6/5.
 	                                                                                                                  */
+
+	$.get('/getNumberWillExpired', function (data) {
+	  console.log(Notification.permission);
+	  console.log(data);
+	  if (!Notification) {
+	    alert('Desktop notifications not available in your browser. Try Chromium.');
+	    return;
+	  }
+	  if (Notification.permission !== "granted") Notification.requestPermission();else {
+	    var notification = new Notification('过期提醒', {
+	      body: '有' + data.length + '件快递存储时间将要过期'
+	    });
+	  }
+	});
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(315)))
 
 /***/ },
 /* 1 */
@@ -44636,7 +44651,7 @@
 	                                    _react2.default.createElement(
 	                                        _Table.TableRowColumn,
 	                                        null,
-	                                        row.deadTime
+	                                        row.deadTime.match(/(\w+-\w+-\w+)T/)[1]
 	                                    )
 	                                );
 	                            })
