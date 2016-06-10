@@ -101,6 +101,7 @@ router.get('/SimpleQueryDate', function(req,res) {
 router.get('/queryComplexData', function(req,res) {
   //req.query like this: { value: '1', condition: 'jk' }
   //type 取值：1为按编号查询,2为按日期查询
+  //condition need be 2016-06-10
   const { value, condition } = req.query;
   let response;
   if( value == 1 ){
@@ -124,13 +125,14 @@ router.get('/queryComplexData', function(req,res) {
   }
 });
 router.get('/queryOutWarehouse', function (req, res) {
-  const today = new Date(Date.now());
+  let today = new Date(Date.now());
   today.setDate(today.getDate()+8);
-  const deadTimeString = today.toDateString();
+  today = today.toISOString();
+  today = today.match(/(\w+-\w+-\w+)T/)[1];
   delivery.findAll({
     where: {
       deadTime: {
-        $lt: deadTimeString
+        $lt: today
       }
     }
   }).then(function(record){
@@ -139,9 +141,10 @@ router.get('/queryOutWarehouse', function (req, res) {
 });
 router.get('/OutWarehouse', function (req, res) {
   const { itemNumber: deliveryNumber } = req.query;
-  const today = new Date(Date.now());
+  let today = new Date(Date.now());
   today.setDate(today.getDate()+8);
-  const deadTimeString = today.toDateString();
+  today = today.toISOString();
+  today = today.match(/(\w+-\w+-\w+)T/)[1];
   //deliveryNumber is a Array like this:[ '0124816' ]
     console.log(deliveryNumber);
     delivery.destroy({
@@ -152,12 +155,27 @@ router.get('/OutWarehouse', function (req, res) {
       delivery.findAll({
         where: {
           deadTime: {
-            $lt: deadTimeString
+            $lt: today
           }
         }
       }).then(function(record){
         res.send(record);
       });
     });
+});
+router.get('/getNumberWillExpired', function (req,res) {
+  let today = new Date(Date.now());
+  today.setDate(today.getDate()+8);
+  today = today.toISOString();
+  today = today.match(/(\w+-\w+-\w+)T/)[1];
+  delivery.findAll({
+    where: {
+      deadTime: {
+        $lt: today
+      }
+    }
+  }).then(function(record){
+    res.send(record);
+  });
 });
 module.exports = router;
