@@ -251,7 +251,7 @@ class Content extends React.Component {
                         <TableRowColumn>{row.Number}</TableRowColumn>
                         <TableRowColumn>{row.savePlace}</TableRowColumn>
                         <TableRowColumn>{row.type}</TableRowColumn>
-                        <TableRowColumn>{row.deadTime}</TableRowColumn>
+                        <TableRowColumn>{row.deadTime.match(/(\w+-\w+-\w+)T/)[1]}</TableRowColumn>
                       </TableRow>
                     ))}
                 </TableBody>
