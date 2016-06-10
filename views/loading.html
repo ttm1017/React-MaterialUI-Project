@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+</head>
+<body>
+<div class="wrap">
+    <div class="form">
+        <div class="head"><h3>登录</h3></div>
+        <form action="/prove" method="get">
+            <div class="form-group">
+                <input type="text" id="username" class="form-control" placeholder="用户名" name="username">
+            </div>
+            <div class="form-group">
+                <input type="text" id="password" class="form-control" placeholder="密码" name="password">
+            </div>
+            <div class="form-actions">
+                <label class="checkbox"><input type="checkbox">保存密码</label>
+                <button type="submit" class="btn btn-success btn-sm">登录</button>
+            </div>
+            <div class="forget-password">
+                <p><a href="#" style="color:white">忘记密码?</a> </p>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="/jquery.min.js"></script>
+<script type="text/javascript" src="/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/login.js"></script>
+</body>
+</html>

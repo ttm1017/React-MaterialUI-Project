@@ -1,0 +1,35 @@
+body h1 h2 h3 h4{
+    font-family: "Open Sans", "Microsoft YaHei UI",sans-serif;
+}
+.wrap{
+    margin-top:200px;
+}
+.logo{
+    margin:30px auto;
+    text-align: center;
+}
+.form {
+    margin:0 auto;
+    padding:20px 30px 15px;
+    width:360px;
+    background:url("../images/bg-white-lock.png") repeat;
+    color:white;
+}
+.form h3{
+    margin-bottom:30px;
+
+}
+.form .form-actions{
+    margin:20px -30px;
+    padding:0 30px 50px;
+    border-bottom: 1px dotted #eee;
+}
+.form .form-actions .checkbox{
+    display:inline-block;
+    margin:10px 0 0 20px;
+    color:#ffffff;
+}
+.form .form-actions button{
+    float:right;
+    margin-top:8px;
+}
