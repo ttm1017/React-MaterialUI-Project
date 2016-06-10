@@ -1,0 +1,24 @@
+html {
+  height:100%
+}
+body {
+  height:100%
+}
+.wrap {
+  height:100%
+}
+.manageTypeContent, .recordQueryContent, .countNumberContent, .inputContent, .outWarehouseContent{
+  position: absolute;
+  display:inline-block;
+  margin: 29px;
+}
+.manageTypeContent {
+  top: 44px;
+}
+.recordQueryContent div:first-child {
+  margin-right:20px;
+}
+.inputContent {
+  margin-left:50px;
+}
+
