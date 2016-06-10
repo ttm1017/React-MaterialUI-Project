@@ -1,10 +1,10 @@
 import React from 'react';
-import $ from 'jquery';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
+import qrcode from 'jquery.qrcode';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 let ifQueryData = 0;
 let itemNumber = [];
@@ -84,7 +84,7 @@ class Content extends React.Component {
             savePlace: this.refs.storePlace.getValue(),
             inToReason: this.refs.reasonOfIn.getValue()
         };
-        console.log(value);
+        $('.qrcode').qrcode({ text: JSON.stringify(value), width: 144, height: 144 });
         $.get('/inputRecord', value, function () {
             const state = Object.assign({}, this.state, { input: "" } );
             this.setState(state);
@@ -171,8 +171,9 @@ class Content extends React.Component {
                 /><br />
                 <br />
                 <RaisedButton
-                  label="查询" primary={true} style={{ margin: 12 }} onClick={this.passInputValue}//onclick function consider as one type
+                  label="入库" className="intoWarehouse" primary={true} style={{ margin: 12 }} onClick={this.passInputValue}//onclick function consider as one type
                 />
+              <div className="qrcode"></div>
             </div>);
         }
         else if (name === null) {

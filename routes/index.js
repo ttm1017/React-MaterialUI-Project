@@ -34,7 +34,7 @@ delivery.sync({force: true}).then(function () {
     });
     delivery.upsert({
       Number: '0258148',
-        inToTime: new Date(Date.now()),
+      inToTime: new Date(Date.now()),
       inToReason: '丢失了单据',
       savePlace: 'J48',
       deadTime:  new Date(2019,6,10),

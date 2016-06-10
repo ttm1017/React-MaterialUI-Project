@@ -20,5 +20,11 @@ body {
 }
 .inputContent {
   margin-left:50px;
+
+}
+.qrcode {
+  position: absolute;
+  right:-200px;
+  top:50px;
 }
 
