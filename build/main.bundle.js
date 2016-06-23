@@ -44408,7 +44408,12 @@
 	            var self = this;
 	            var set = new Set(itemNumber);
 	            itemNumber = [].concat(_toConsumableArray(set));
-	            console.log(itemNumber);
+	            console.log(this.state.tableData[0].arriveTime);
+	            var arriveTime = this.state.tableData[0].arriveTime.match(/T(\w+\w+)/)[1];
+	            var current = new Date().getUTCHours();
+	            var arrt = parseInt(arriveTime);
+	            var fee = (current - arrt) * 10;
+	            alert(fee);
 	            $.get('/OutWarehouse', { itemNumber: itemNumber }, function () {
 	                self.queryOutWarehouse();
 	            }.bind(self));

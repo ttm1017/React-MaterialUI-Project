@@ -117,7 +117,12 @@ class Content extends React.Component {
         const self = this;
         const set = new Set(itemNumber);
         itemNumber = [...set];
-        console.log(itemNumber);
+        console.log(this.state.tableData[0].arriveTime);
+        const arriveTime = this.state.tableData[0].arriveTime.match(/T(\w+\w+)/)[1];
+        const current = new Date().getUTCHours();
+        const arrt = parseInt(arriveTime);
+        const fee = (current-arrt)*10;
+        alert(fee)
         $.get('/OutWarehouse', { itemNumber }, function () {
             self.queryOutWarehouse();
         }.bind(self));
