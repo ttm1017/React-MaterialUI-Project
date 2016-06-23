@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function($) {'use strict';
+	'use strict';
 
 	var _react = __webpack_require__(1);
 
@@ -63,21 +63,6 @@
 	_reactDom2.default.render(_react2.default.createElement(_wrap2.default, null), document.querySelector('.wrap')); /**
 	                                                                                                                  * Created by ttm on 2016/6/5.
 	                                                                                                                  */
-
-	$.get('/getNumberWillExpired', function (data) {
-	  console.log(Notification.permission);
-	  console.log(data);
-	  if (!Notification) {
-	    alert('Desktop notifications not available in your browser. Try Chromium.');
-	    return;
-	  }
-	  if (Notification.permission !== "granted") Notification.requestPermission();else {
-	    var notification = new Notification('过期提醒', {
-	      body: '有' + data.length + '件快递存储时间将要过期'
-	    });
-	  }
-	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(315)))
 
 /***/ },
 /* 1 */
@@ -20516,13 +20501,9 @@
 	                _react2.default.createElement(
 	                    _List.List,
 	                    { onClick: this.props.onClick, style: ListStyle },
-	                    _react2.default.createElement(_List.ListItem, { primaryText: '入库单据填写', className: 'input' }),
-	                    _react2.default.createElement(_List.ListItem, { primaryText: '管理单品种类', className: 'manageType' }),
+	                    _react2.default.createElement(_List.ListItem, { primaryText: '停车信息填写', className: 'input' }),
 	                    _react2.default.createElement(_Divider2.default, null),
-	                    _react2.default.createElement(_List.ListItem, { primaryText: '出入库记录查询', className: 'recordQuery' }),
-	                    _react2.default.createElement(_List.ListItem, { primaryText: '单品数量查询', className: 'countNumber' }),
-	                    _react2.default.createElement(_Divider2.default, null),
-	                    _react2.default.createElement(_List.ListItem, { primaryText: '单品出库', className: 'outWarehouse' })
+	                    _react2.default.createElement(_List.ListItem, { primaryText: '费用结算', className: 'outWarehouse' })
 	                )
 	            );
 	        }
@@ -44359,7 +44340,7 @@
 	                for (var _iterator = selectRow[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 	                    var item = _step.value;
 
-	                    itemNumber.push(this.state.tableData[item].Number); //store data in itemNumber
+	                    itemNumber.push(this.state.tableData[item].license); //store data in itemNumber
 	                }
 	            } catch (err) {
 	                _didIteratorError = true;
@@ -44381,12 +44362,9 @@
 	        value: function passInputValue() {
 	            var self = this;
 	            var value = {
-	                Number: this.refs.expressNumber.getValue(),
-	                type: this.refs.expressType.getValue(),
-	                savePlace: this.refs.storePlace.getValue(),
-	                inToReason: this.refs.reasonOfIn.getValue()
+	                license: this.refs.license.getValue(),
+	                parkingPlace: this.refs.parkingPlace.getValue()
 	            };
-	            $('.qrcode').qrcode({ text: JSON.stringify(value), width: 144, height: 144 });
 	            $.get('/inputRecord', value, function () {
 	                var state = Object.assign({}, this.state, { input: "" });
 	                this.setState(state);
@@ -44430,16 +44408,17 @@
 	            var self = this;
 	            var set = new Set(itemNumber);
 	            itemNumber = [].concat(_toConsumableArray(set));
-	            $.get('/OutWarehouse', { itemNumber: itemNumber }, function (data) {
-	                var state = Object.assign({}, this.state, { tableData: data });
-	                this.setState(state); //data should like tableData in the top
+	            console.log(itemNumber);
+	            $.get('/OutWarehouse', { itemNumber: itemNumber }, function () {
+	                self.queryOutWarehouse();
 	            }.bind(self));
 	        }
 	    }, {
 	        key: 'queryOutWarehouse',
 	        value: function queryOutWarehouse() {
 	            var self = this;
-	            $.get('/queryOutWarehouse', function (data) {
+	            $.get('/queryOutWarehouse', this.state, function (data) {
+	                //state ,value is type,condition is condition
 	                var state = Object.assign({}, this.state, { tableData: data });
 	                this.setState(state); //data should like tableData in the top
 	            }.bind(self));
@@ -44454,133 +44433,26 @@
 	                    'div',
 	                    { className: 'inputContent' },
 	                    _react2.default.createElement(_TextField2.default, {
-	                        floatingLabelText: '快递单号',
+	                        floatingLabelText: '车牌号',
 	                        style: { width: '339px' },
-	                        ref: 'expressNumber',
+	                        ref: 'license',
 	                        value: this.state.input
 	                    }),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(_TextField2.default, {
-	                        floatingLabelText: '单品种类',
+	                        floatingLabelText: '停车地点',
 	                        style: { width: '339px' },
-	                        ref: 'expressType',
+	                        ref: 'parkingPlace',
 	                        value: this.state.input
 	                    }),
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement(_TextField2.default, {
-	                        floatingLabelText: '仓库内位置',
-	                        style: { width: '339px' },
-	                        ref: 'storePlace',
-	                        value: this.state.input
-	                    }),
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement(_TextField2.default, {
-	                        floatingLabelText: '入库原因',
-	                        style: { width: '339px' },
-	                        ref: 'reasonOfIn',
-	                        value: this.state.input
-	                    }),
-	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(_RaisedButton2.default, {
-	                        label: '入库', className: 'intoWarehouse', primary: true, style: { margin: 12 }, onClick: this.passInputValue //onclick function consider as one type
-	                    }),
-	                    _react2.default.createElement('div', { className: 'qrcode' })
+	                        label: '记录', className: 'intoWarehouse', primary: true, style: { margin: 12 }, onClick: this.passInputValue //onclick function consider as one type
+	                    })
 	                );
 	            } else if (name === null) {
 	                element = _react2.default.createElement('div', null);
-	            } else if (name === 'manageType') {
-	                var tableComp = ifQueryData ? _react2.default.createElement(ReferTable, { tableData: this.state.queryData }) : null;
-	                element = _react2.default.createElement(
-	                    'div',
-	                    { className: 'manageTypeContent' },
-	                    _react2.default.createElement(
-	                        _SelectField2.default,
-	                        { value: this.state.value, onChange: this.handleChange },
-	                        _react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: '易碎' }),
-	                        _react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: '易燃' }),
-	                        _react2.default.createElement(_MenuItem2.default, { value: 3, primaryText: '其他' })
-	                    ),
-	                    _react2.default.createElement(_RaisedButton2.default, {
-	                        label: '查询', primary: true, style: { margin: 12 }, onClick: this.SimpleQueryType //onclick function consider as one type
-	                    }),
-	                    tableComp
-	                );
-	            } else if (name === 'recordQuery') {
-	                var _tableComp = ifQueryData ? _react2.default.createElement(ReferTable, { tableData: this.state.queryData }) : null;
-	                element = _react2.default.createElement(
-	                    'div',
-	                    { className: 'recordQueryContent' },
-	                    _react2.default.createElement(
-	                        _SelectField2.default,
-	                        { value: this.state.value, onChange: this.handleChange },
-	                        _react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: '按编号查询' }),
-	                        _react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: '按日期查询' })
-	                    ),
-	                    _react2.default.createElement(_TextField2.default, {
-	                        hintText: '查询条件',
-	                        ref: 'condition',
-	                        onBlur: this.handleOnBlurRecord
-	                    }),
-	                    _react2.default.createElement(_RaisedButton2.default, {
-	                        label: '查询', primary: true, style: { margin: 12 }, onClick: this.recordQuery
-	                    }),
-	                    _tableComp
-	                );
-	            } else if (name === 'countNumber') {
-	                element = _react2.default.createElement(
-	                    'div',
-	                    { className: 'countNumberContent' },
-	                    _react2.default.createElement(_DatePicker2.default, { hintText: '按日期查询入库件', ref: 'date', onChange: this.handChangeCountNumber }),
-	                    _react2.default.createElement(_RaisedButton2.default, {
-	                        label: '查询', primary: true, style: { margin: 12 }, onClick: this.SimpleQueryDate
-	                    }),
-	                    _react2.default.createElement(
-	                        _Table.Table,
-	                        null,
-	                        _react2.default.createElement(
-	                            _Table.TableHeader,
-	                            null,
-	                            _react2.default.createElement(
-	                                _Table.TableRow,
-	                                null,
-	                                _react2.default.createElement(
-	                                    _Table.TableHeaderColumn,
-	                                    { tooltip: 'Id' },
-	                                    'Id'
-	                                ),
-	                                _react2.default.createElement(
-	                                    _Table.TableHeaderColumn,
-	                                    { tooltip: 'recordNumber' },
-	                                    '入库件数'
-	                                )
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            _Table.TableBody,
-	                            null,
-	                            this.state.countDeliveryNumber.map(function (row, index) {
-	                                return _react2.default.createElement(
-	                                    _Table.TableRow,
-	                                    { key: index },
-	                                    _react2.default.createElement(
-	                                        _Table.TableRowColumn,
-	                                        null,
-	                                        index
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        _Table.TableRowColumn,
-	                                        null,
-	                                        row.Number
-	                                    )
-	                                );
-	                            })
-	                        )
-	                    )
-	                );
 	            } else {
 	                element = _react2.default.createElement(
 	                    'div',
@@ -44601,23 +44473,18 @@
 	                                ),
 	                                _react2.default.createElement(
 	                                    _Table.TableHeaderColumn,
-	                                    { tooltip: 'Number' },
-	                                    '快递单号'
+	                                    { tooltip: 'License' },
+	                                    '车牌号'
 	                                ),
 	                                _react2.default.createElement(
 	                                    _Table.TableHeaderColumn,
-	                                    { tooltip: 'StorePlace' },
-	                                    '仓库内位置'
+	                                    { tooltip: 'Parking' },
+	                                    '停车号'
 	                                ),
 	                                _react2.default.createElement(
 	                                    _Table.TableHeaderColumn,
-	                                    { tooltip: 'Type' },
-	                                    '单品种类'
-	                                ),
-	                                _react2.default.createElement(
-	                                    _Table.TableHeaderColumn,
-	                                    { tooltip: 'DeadTime' },
-	                                    '到期时间'
+	                                    { tooltip: 'Arriving Time' },
+	                                    '到达时间'
 	                                )
 	                            )
 	                        ),
@@ -44636,27 +44503,33 @@
 	                                    _react2.default.createElement(
 	                                        _Table.TableRowColumn,
 	                                        null,
-	                                        row.Number
+	                                        row.license
 	                                    ),
 	                                    _react2.default.createElement(
 	                                        _Table.TableRowColumn,
 	                                        null,
-	                                        row.savePlace
+	                                        row.parkingPlace
 	                                    ),
 	                                    _react2.default.createElement(
 	                                        _Table.TableRowColumn,
 	                                        null,
-	                                        row.type
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        _Table.TableRowColumn,
-	                                        null,
-	                                        row.deadTime.match(/(\w+-\w+-\w+)T/)[1]
+	                                        row.arriveTime
 	                                    )
 	                                );
 	                            })
 	                        )
 	                    ),
+	                    _react2.default.createElement(
+	                        _SelectField2.default,
+	                        { value: this.state.value, onChange: this.handleChange },
+	                        _react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: '按车牌查询' }),
+	                        _react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: '按停车位查询' })
+	                    ),
+	                    _react2.default.createElement(_TextField2.default, {
+	                        hintText: '查询条件',
+	                        ref: 'condition',
+	                        onBlur: this.handleOnBlurRecord
+	                    }),
 	                    _react2.default.createElement(_RaisedButton2.default, {
 	                        label: '查询', primary: true, style: { margin: 12 }, onClick: this.queryOutWarehouse
 	                    }),

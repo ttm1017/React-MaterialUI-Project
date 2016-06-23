@@ -15,7 +15,6 @@ class Wrap extends React.Component {
         }
         this.handleOnClick = this.handleOnClick.bind(this);
     }
-
     handleOnClick(e) {
         const state = {};
         Object.assign(state, this.state, {

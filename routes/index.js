@@ -6,39 +6,27 @@ var Sequelize = require('sequelize');
 var sequelize = new Sequelize('mysql://root:123456@localhost:3306/express');
 /* GET home page. */
 //define data model
-var delivery = sequelize.define('delivery', {
-  Number: { type: Sequelize.STRING,  unique: true },
-  inToTime: Sequelize.DATEONLY,
-  inToReason: Sequelize.STRING,
-  savePlace: Sequelize.STRING,
-  deadTime: Sequelize.DATEONLY,
-  type: Sequelize.STRING
+var delivery = sequelize.define('parkingcarinformation', {
+  license: { type: Sequelize.STRING,  unique: true },
+  parkingPlace: Sequelize.STRING,
+  arriveTime: Sequelize.DATEONLY
 });
 //create the table and insert the first record
 delivery.sync({force: true}).then(function () {
   return delivery.create({
-    Number: '012348215',
-    inToTime: new Date(Date.now()),
-    inToReason: '丢失了单据',
-    savePlace: 'C12',
-    deadTime:  new Date(Date.now()),
-    type: '易燃'
+    license: 'GK12001',
+    parkingPlace: 'C12',
+    arriveTime:  new Date(Date.now())
   }).then(function(){
     delivery.upsert({
-      Number: '012312',
-      inToTime: new Date(Date.now()),
-      inToReason: '丢失了单据',
-      savePlace: 'K48',
-      deadTime:  new Date(2019,6,14),
-      type: '易碎'
+      license: '浙A1063',
+      parkingPlace: 'K48',
+      arriveTime:  new Date(2019,6,14)
     });
     delivery.upsert({
-      Number: '0258148',
-      inToTime: new Date(Date.now()),
-      inToReason: '丢失了单据',
-      savePlace: 'J48',
-      deadTime:  new Date(2019,6,10),
-      type: '易燃'
+      license: 'KU13XXX',
+      parkingPlace: 'J48',
+      arriveTime:  new Date(2019,6,10)
     })
   });
 });
@@ -49,12 +37,8 @@ router.get('/', function (req, res) {
 router.get('/inputRecord', function(req, res) {
   const recordInfo = req.query;
   const today = new Date();
-  const deadyear= today.getFullYear()+3;
-  const deadmonth = today.getMonth();
-  const deaddate = today.getDate();
-  const deadTime = new Date(deadyear, deadmonth, deaddate);
-  recordInfo.inToTime = today;
-  recordInfo.deadTime = deadTime;
+  recordInfo.arriveTime = today;
+  recordInfo.date = today;
   delivery.upsert(recordInfo);
   res.send('success');
 });
@@ -125,43 +109,39 @@ router.get('/queryComplexData', function(req,res) {
   }
 });
 router.get('/queryOutWarehouse', function (req, res) {
-  let today = new Date(Date.now());
-  today.setDate(today.getDate()+8);
-  today = today.toISOString();
-  today = today.match(/(\w+-\w+-\w+)T/)[1];
+  const {value, condition} = req.query;//value:1 license,value:2 parking place
+  if (value == 1) {
   delivery.findAll({
     where: {
-      deadTime: {
-        $lt: today
-      }
+      license: condition
     }
   }).then(function(record){
     res.send(record);
   });
+  }
+  if(value == 2) {
+    console.log(condition);
+    delivery.findAll({
+      where: {
+        parkingPlace: condition
+      }
+    }).then(function(record){
+      res.send(record);
+    });
+  }
 });
+//deliveryNumber is a Array like this:[ '0124816' ]
 router.get('/OutWarehouse', function (req, res) {
-  const { itemNumber: deliveryNumber } = req.query;
-  let today = new Date(Date.now());
-  today.setDate(today.getDate()+8);
-  today = today.toISOString();
-  today = today.match(/(\w+-\w+-\w+)T/)[1];
-  //deliveryNumber is a Array like this:[ '0124816' ]
-    console.log(deliveryNumber);
+  console.log( req.query);
+  const { itemNumber } = req.query;
     delivery.destroy({
       where: {
-        Number: deliveryNumber
+        license: itemNumber
       }
     }).then(function() {
-      delivery.findAll({
-        where: {
-          deadTime: {
-            $lt: today
-          }
-        }
-      }).then(function(record){
-        res.send(record);
-      });
+        res.send('success');
     });
+  res.send( req.query);
 });
 router.get('/getNumberWillExpired', function (req,res) {
   let today = new Date(Date.now());
