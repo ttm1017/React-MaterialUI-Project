@@ -95,16 +95,10 @@ score.sync({force: true}).then(function () {
 router.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, '../views/main.html'));
 });
-router.get('/inputRecord', function (req, res) {
+
+router.get('/insert', function (req, res) {
     const recordInfo = req.query;
-    const today = new Date();
-    const deadyear = today.getFullYear() + 3;
-    const deadmonth = today.getMonth();
-    const deaddate = today.getDate();
-    const deadTime = new Date(deadyear, deadmonth, deaddate);
-    recordInfo.inToTime = today;
-    recordInfo.deadTime = deadTime;
-    delivery.upsert(recordInfo);
+    score.upsert(recordInfo);
     res.send('success');
 });
 router.get('/SimpleQueryType', function (req, res) {

@@ -4,15 +4,13 @@ import $ from 'jquery';
 import Content from './content.jsx';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 class Wrap extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             content: null,
             ifClear: false
-        }
+        };
         this.handleOnClick = this.handleOnClick.bind(this);
     }
 

@@ -21,13 +21,10 @@ class Slider extends React.Component {
     render() {
         return (<MuiThemeProvider muiTheme={muiTheme}>
           <List  onClick={this.props.onClick} style={ListStyle} >
-            <ListItem primaryText="入库单据填写" className="input" />
-            <ListItem primaryText="管理单品种类" className="manageType" />
+            <ListItem primaryText="录入学生成绩" className="insert" />
+            <ListItem primaryText="查询学生成绩" className="query" />
             <Divider />
-            <ListItem primaryText="出入库记录查询" className="recordQuery" />
-            <ListItem primaryText="单品数量查询" className="countNumber" />
-            <Divider />
-            <ListItem primaryText="单品出库" className="outWarehouse" />
+            <ListItem primaryText="删除学生成绩" className="delete" />
           </List>
         </MuiThemeProvider>)
     }
