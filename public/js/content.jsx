@@ -34,6 +34,9 @@ class Content extends React.Component {
             const state = Object.assign({}, this.state, { input: "" } );
             requestDone = true;
             this.setState(state);
+            Object.keys(this.refs).forEach(function (value) {
+                self.refs[value].input.value = ""
+            });
         }.bind(self));
     }
     selectChange(event, index, value) { this.setState({ value }); }
@@ -44,6 +47,9 @@ class Content extends React.Component {
         $.get('/query', queryObj, function (data) {
             ifQueryData = 1;
             const state = Object.assign({}, this.state, { queryData: data,input: "" });
+            Object.keys(this.refs).forEach(function (value) {
+                self.refs[value].input.value = ""
+            });
             this.setState(state);
         }.bind(self));
     }
@@ -57,6 +63,9 @@ class Content extends React.Component {
             deleteCourseId
         };
         $.get('/delete', deleteCondition, function (data) {
+            Object.keys(this.refs).forEach(function (value) {
+                self.refs[value].input.value = ""
+            });
             alert(data);
         }.bind(self));
     }
@@ -69,35 +78,30 @@ class Content extends React.Component {
                   floatingLabelText="学号"
                   style={{ width: '339px' }}
                   ref="studentId"
-                  value={this.state.input}
                 /><br />
                 <br />
                 <TextField
                   floatingLabelText="课程Id"
                   style={{ width: '339px' }}
                   ref="courseId"
-                  value={this.state.input}
                 /><br />
                 <br />
                 <TextField
                   floatingLabelText="考勤成绩"
                   style={{ width: '339px' }}
                   ref="work_score"
-                  value={this.state.input}
                 /><br />
                 <br />
                 <TextField
                   floatingLabelText="实验成绩"
                   style={{ width: '339px' }}
                   ref="attendance_score"
-                  value={this.state.input}
                 /><br />
                 <br />
                 <TextField
                     floatingLabelText="总成绩"
                     style={{ width: '339px' }}
                     ref="grade"
-                    value={this.state.input}
                 />
                 <RaisedButton
                   label="插入" className="intoWarehouse" primary={true} style={{ margin: 12 }} onClick={this.passInputValue}//onclick function consider as one type
@@ -115,7 +119,6 @@ class Content extends React.Component {
                     floatingLabelText="查询条件"
                     style={{ width: '339px' }}
                     ref="queryCondition"
-                    value={this.state.input}
                 />
               <RaisedButton
                 label="查询" primary={true} style={{ margin: 12 }} onClick={this.SimpleQueryType}//onclick function consider as one type

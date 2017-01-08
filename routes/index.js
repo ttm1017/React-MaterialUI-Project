@@ -81,7 +81,7 @@ course.sync({force: true}).then(function () {
 });
 //create score table and init data
 score.sync({force: true}).then(function () {
-    return user.create({
+    return score.create({
         courseId: 1,
         studentId: 1,
         work_score: 89.1,
@@ -101,121 +101,42 @@ router.get('/insert', function (req, res) {
     score.upsert(recordInfo);
     res.send('success');
 });
-router.get('/SimpleQueryType', function (req, res) {
-    const type = req.query.value;
-    if (type == 1) {
-        delivery.findAll({
-            where: {
-                type: '易碎'
-            }
-        }).then(function (record) {
-            res.send(record);
-        });
-    }
-    else if (type == 2) {
-        delivery.findAll({
-            where: {
-                type: '易燃'
-            }
-        }).then(function (record) {
-            res.send(record);
-        });
-    }
-    else {
-        delivery.findAll({
-            where: {
-                type: '其他'
-            }
-        }).then(function (record) {
-            res.send(record);
-        });
-    }
-});
-router.get('/SimpleQueryDate', function (req, res) {
-    let date = (new Date(req.query.value)).toISOString();
-    date = date.match(/(\w+-\w+-\w+)T/)[1];
-    console.log(date);
-    delivery.count({where: {inToTime: date}}).then(function (c) {
-        console.log(c);
-        res.send([{Number: c}]);
-    });
-});
-router.get('/queryComplexData', function (req, res) {
-    //req.query like this: { value: '1', condition: 'jk' }
-    //type 取值：1为按编号查询,2为按日期查询
-    //condition need be 2016-06-10
-    const {value, condition} = req.query;
-    let response;
+router.get('/query', function (req, res) {
+    const {value, queryCondition} = req.query;
     if (value == 1) {
-        delivery.findOne({where: {Number: condition}}).then(function (record) {
-            if (record == null) {
-                res.send(null);
-            }
-            else {
-                response = [record];
-                res.send(response);
-            }
-        })
-    }
-    else {
-        delivery.findAll({where: {inToTime: condition}}).then(function (record) {
-            response = record;
-            res.send(response);
-        })
-    }
-});
-router.get('/queryOutWarehouse', function (req, res) {
-    let today = new Date(Date.now());
-    today.setDate(today.getDate() + 8);
-    today = today.toISOString();
-    today = today.match(/(\w+-\w+-\w+)T/)[1];
-    delivery.findAll({
-        where: {
-            deadTime: {
-                $lt: today
-            }
-        }
-    }).then(function (record) {
-        res.send(record);
-    });
-});
-router.get('/OutWarehouse', function (req, res) {
-    const {itemNumber: deliveryNumber} = req.query;
-    let today = new Date(Date.now());
-    today.setDate(today.getDate() + 8);
-    today = today.toISOString();
-    today = today.match(/(\w+-\w+-\w+)T/)[1];
-    //deliveryNumber is a Array like this:[ '0124816' ]
-    console.log(deliveryNumber);
-    delivery.destroy({
-        where: {
-            Number: deliveryNumber
-        }
-    }).then(function () {
-        delivery.findAll({
+        score.findAll({
             where: {
-                deadTime: {
-                    $lt: today
-                }
+                studentId: queryCondition
             }
         }).then(function (record) {
             res.send(record);
         });
-    });
-});
-router.get('/getNumberWillExpired', function (req, res) {
-    let today = new Date(Date.now());
-    today.setDate(today.getDate() + 8);
-    today = today.toISOString();
-    today = today.match(/(\w+-\w+-\w+)T/)[1];
-    delivery.findAll({
-        where: {
-            deadTime: {
-                $lt: today
+    }
+    else if (value == 2) {
+        score.findAll({
+            where: {
+                courseId: queryCondition
             }
+        }).then(function (record) {
+            res.send(record);
+        });
+    }
+    else {
+        res.send("'don't support the query type");
+    }
+});
+router.get('/delete', function (req, res) {
+    let {deleteStudentId, deleteCourseId} = req.query;
+    deleteStudentId = parseInt(deleteStudentId);
+    deleteCourseId = parseInt(deleteCourseId);
+    score.destroy({
+        where: {
+            studentId: deleteStudentId,
+            courseId: deleteCourseId
         }
-    }).then(function (record) {
-        res.send(record);
+    }).then(function (result) {
+        console.log(result);
+        res.send(`the number is${result}`);
     });
 });
 module.exports = router;

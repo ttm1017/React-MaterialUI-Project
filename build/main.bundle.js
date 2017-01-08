@@ -42837,6 +42837,9 @@
 	                var state = Object.assign({}, this.state, { input: "" });
 	                requestDone = true;
 	                this.setState(state);
+	                Object.keys(this.refs).forEach(function (value) {
+	                    self.refs[value].input.value = "";
+	                });
 	            }.bind(self));
 	        }
 	    }, {
@@ -42853,6 +42856,9 @@
 	            $.get('/query', queryObj, function (data) {
 	                ifQueryData = 1;
 	                var state = Object.assign({}, this.state, { queryData: data, input: "" });
+	                Object.keys(this.refs).forEach(function (value) {
+	                    self.refs[value].input.value = "";
+	                });
 	                this.setState(state);
 	            }.bind(self));
 	        }
@@ -42868,6 +42874,9 @@
 	                deleteCourseId: deleteCourseId
 	            };
 	            $.get('/delete', deleteCondition, function (data) {
+	                Object.keys(this.refs).forEach(function (value) {
+	                    self.refs[value].input.value = "";
+	                });
 	                alert(data);
 	            }.bind(self));
 	        }
@@ -42883,40 +42892,35 @@
 	                    _react2.default.createElement(_TextField2.default, {
 	                        floatingLabelText: '\u5B66\u53F7',
 	                        style: { width: '339px' },
-	                        ref: 'studentId',
-	                        value: this.state.input
+	                        ref: 'studentId'
 	                    }),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(_TextField2.default, {
 	                        floatingLabelText: '\u8BFE\u7A0BId',
 	                        style: { width: '339px' },
-	                        ref: 'courseId',
-	                        value: this.state.input
+	                        ref: 'courseId'
 	                    }),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(_TextField2.default, {
 	                        floatingLabelText: '\u8003\u52E4\u6210\u7EE9',
 	                        style: { width: '339px' },
-	                        ref: 'work_score',
-	                        value: this.state.input
+	                        ref: 'work_score'
 	                    }),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(_TextField2.default, {
 	                        floatingLabelText: '\u5B9E\u9A8C\u6210\u7EE9',
 	                        style: { width: '339px' },
-	                        ref: 'attendance_score',
-	                        value: this.state.input
+	                        ref: 'attendance_score'
 	                    }),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(_TextField2.default, {
 	                        floatingLabelText: '\u603B\u6210\u7EE9',
 	                        style: { width: '339px' },
-	                        ref: 'grade',
-	                        value: this.state.input
+	                        ref: 'grade'
 	                    }),
 	                    _react2.default.createElement(_RaisedButton2.default, {
 	                        label: '\u63D2\u5165', className: 'intoWarehouse', primary: true, style: { margin: 12 }, onClick: this.passInputValue //onclick function consider as one type
@@ -42936,8 +42940,7 @@
 	                    _react2.default.createElement(_TextField2.default, {
 	                        floatingLabelText: '\u67E5\u8BE2\u6761\u4EF6',
 	                        style: { width: '339px' },
-	                        ref: 'queryCondition',
-	                        value: this.state.input
+	                        ref: 'queryCondition'
 	                    }),
 	                    _react2.default.createElement(_RaisedButton2.default, {
 	                        label: '\u67E5\u8BE2', primary: true, style: { margin: 12 }, onClick: this.SimpleQueryType //onclick function consider as one type
